@@ -1,9 +1,9 @@
-.megamenu {
-    position: static;
+.MuiBottomNavigation-root {
+    display: flex;
+    backgroundColor: #ffffff00;
+    justify-content: right;
 }
 
-.megamenu .dropdown-menu {
-    background: none;
-    border: none;
-    width: 100%;
+.Button:disabled {
+    color: aliceblue;
 }
