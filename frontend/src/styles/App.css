@@ -25,7 +25,7 @@
   background-size: cover;
   background-position-y: -100px;
   filter: blur(4px);
-  -webkit-filter: blur(4px);
+  -webkit-filter: blur(10px);
   min-height: 100vh;
 }
 
@@ -35,6 +35,10 @@
   height: 100%;
   top: 0;
   overflow: auto;
+}
+
+.data-input {
+  margin: 5px;
 }
 
 .header {

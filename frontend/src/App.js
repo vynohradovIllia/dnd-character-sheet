@@ -57,8 +57,19 @@ function App() {
             <ThemeProvider theme={theme}>
                 <div className="main-bg"/>
                 <div className='absolute-util'>
-                    <SimpleBottomNavigation/>
+                    <SimpleBottomNavigation />
                     <Button variant="outlined" sx={{marginTop: '24px'}}>Generate character</Button>
+                    <div style={{display: 'flex', width: 'auto', height: 'auto', border: 'static', marginLeft: '10%', marginRight: '10%', marginTop: '24px'}}>
+                        <div className='data-input' style={{width: '68px'}}>
+                        <TextField  id="level" label="Level" type="search" />
+                            </div>
+                        <div className='data-input' style={{width: '260px'}}>
+                            <TextField fullWidth  id="character-name" label="Character name" type="search" />
+                        </div>
+                        <div className='data-input'>
+                            <TextField id="gamers-name" label="Your name" type="search" />
+                        </div>
+                    </div>
                 </div>
             </ThemeProvider>
         </div>
