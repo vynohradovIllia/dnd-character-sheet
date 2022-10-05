@@ -14,6 +14,11 @@
   }
 }
 
+.test-jopa {
+  height: 100px;
+  width: 100px;
+}
+
 .main-bg {
   background-image: url("../resources/background.webp");
   opacity: 70%;

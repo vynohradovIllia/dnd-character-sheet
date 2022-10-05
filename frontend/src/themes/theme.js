@@ -6,21 +6,21 @@ export const theme = createTheme({
             main: '#be7a38',
             light: '#b80dd0',
             dark: '#074481',
-            contrastText: '#4188d0',
+            contrastText: '#e14444',
         },
         secondary: {
             main: '#11cb5f',
         },
         text: {
-            primary: '#2293ff',
-            secondary: '#ffd2f0',
+            primary: 'rgba(255,255,255,0.9)',
+            secondary: '#ffffff',
             disabled: '#93af41',
         },
     },
     components: {
         MuiButtonBase: {
             defaultProps: {
-                disableRipple: true,
+                disableRipple: false,
             },
         },
     },
