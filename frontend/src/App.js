@@ -1,8 +1,7 @@
 import * as React from 'react';
-
-//importing styles
+import {useState} from 'react';
+import i18next from "i18next";
 import './styles/App.css'
-import {useState} from "react";
 
 function Random() {
     return <div>
@@ -12,15 +11,47 @@ function Random() {
     </div>
 }
 
-function Parameter({name}) {
+function PrimaryParam({name, onChange}) {
     const [number, setNumber] = useState(10)
     return <div>
-        {name}
+        {i18next.t(name)}
         <Random/>
         <div>
-            <input onChange={(value) => setNumber(value.target.value)}/>
+            <input onChange={onChange}/>
             {Math.floor((number - 10) / 2)}
         </div>
+    </div>
+}
+
+function PrimaryParameters({params, setParams}) {
+    return <div>
+        <PrimaryParam name={"param.STR"}/>
+        <PrimaryParam name={"param.DEX"}/>
+        <PrimaryParam name={"param.CON"}/>
+        <PrimaryParam name={"param.INT"}/>
+        <PrimaryParam name={"param.WIS"} onChange={(value) => setParams({...params,wisdom:Number(value.target.value)})}/>
+        <PrimaryParam name={"param.CHA"}/>
+    </div>
+}
+
+function SecondaryParam({name, number}){
+    return <div>
+        {i18next.t(name)}
+        {number}
+    </div>
+}
+
+function SecondaryParameters({params}) {
+    return <div>
+        <SecondaryParam name={"param.prof_bonus"} number={2 + (Math.floor((params.level-1)/4))}/>
+        <SecondaryParam name={"param.inspiration"} number={0}/>
+        <SecondaryParam name={"param.passive_wisdom"} number={10 + Math.floor((params.wisdom - 10) / 2)}/>
+    </div>
+}
+
+function Skills() {
+    return <div>
+
     </div>
 }
 
@@ -31,7 +62,7 @@ function Header() {
             <button>Profile</button>
         </div>
         <div>
-            <input placeholder={'Search'}/>
+            <input placeholder={i18next.t("search")}/>
             <Random/>
         </div>
         <div>
@@ -41,52 +72,50 @@ function Header() {
     </div>
 }
 
-function MainInfo() {
+function MainInfo({params, setParams}) {
     return <div id='Main info'>
-        <input placeholder={'Character name'}/>
-        <input placeholder={'Level'}/>
+        <input placeholder={i18next.t("player_name")}/>
+        <input placeholder={i18next.t("param.level")} onChange={(value) => setParams({...params,level:Number(value.target.value)})}/>
         <div>
-            <input placeholder={'Player`s name'}/>
+            <input placeholder={i18next.t("character_name")}/>
             <Random/>
         </div>
         <div>
-            <input placeholder={'Race'}/>
+            <input placeholder={i18next.t("param.race")}/>
             <Random/>
         </div>
         <div>
-            <input placeholder={'Class'}/>
+            <input placeholder={i18next.t("param.class")}/>
             <Random/>
         </div>
         <div>
-            <input placeholder={'Specialization'}/>
+            <input placeholder={i18next.t("param.spec")}/>
             <Random/>
         </div>
     </div>
 }
 
-function MainParameters() {
+function ParametersAndSkills({params, setParams}) {
     return <div>
-        <Parameter name='Strength'/>
-        <Parameter name='Dexterity'/>
-        <Parameter name='Constitution'/>
-    </div>
+        <PrimaryParameters params={params} setParams={setParams}/>
+        <SecondaryParameters params={params}/>
+        <Skills/>
+    </div>;
 }
 
 function App() {
+    const [params, setParams] = useState({level: 1, wisdom: 10})
 
-    return (
-        <div>
+    return (<div>
             <div className="background"/>
             <div className='main'>
                 <Header/>
                 <div className='body'>
-
-                    <MainInfo/>
-                    <MainParameters/>
+                    <MainInfo params={params} setParams={setParams}/>
+                    <ParametersAndSkills params={params} setParams={setParams}/>
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 }
 
 export default App;

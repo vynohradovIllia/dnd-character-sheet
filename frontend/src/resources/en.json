@@ -1,0 +1,20 @@
+{
+  "param": {
+    "STR": "Strength",
+    "DEX": "Dexterity",
+    "CON": "Constitution",
+    "INT": "Intelligence",
+    "WIS": "Wisdom",
+    "CHA": "Charisma",
+    "level": "Level",
+    "race": "Race",
+    "class": "Class",
+    "spec": "Specialization",
+    "prof_bonus": "Proficiency bonus",
+    "inspiration": "Inspiration",
+    "passive_wisdom": "Passive wisdom"
+  },
+  "search": "Search",
+  "player_name": "Player`s name",
+  "character_name": "Character name"
+}
