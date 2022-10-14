@@ -1,25 +1,15 @@
-const http = require("http");
-const fs = require("fs");
-   
-http.createServer(function(request, response){
-       
-    let filePath = "index.html";
-    if(request.url !== "/"){
-        // получаем путь после слеша
-        filePath = request.url.substring(1);
-    }
-    fs.readFile(filePath, function(error, data){
-               
-        if(error){
-                   
-            response.statusCode = 404;
-            response.end("Resourse not found!");
-        }   
-        else{
-            response.end(data);
-        }
-    });
-     
-}).listen(3000, function(){
-    console.log("Server started at 3000");
-});
+const express = require("express")
+
+const app = express()
+const userRouter = require("./routes/users")
+
+app.use("/users", userRouter)
+
+app.use((error, req, res, next) => {
+    console.log(error)
+    res.status(404).send("Not Found")
+})
+
+app.listen(5000, () => {
+    console.log("Server is running on port 5000");
+})
